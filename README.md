@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Yappy
-hack solution
-=======
 # Infra Yappy Project
 
 ## Project Overview
