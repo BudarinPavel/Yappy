@@ -1,0 +1,3 @@
+2024-09-29 02:37:29,862 - __main__ - INFO - Starting to process video: string
+2024-09-29 02:37:29,863 - __main__ - INFO - Received request for video: string
+2024-09-29 02:37:29,863 - __main__ - INFO - Video string added to Weaviate.

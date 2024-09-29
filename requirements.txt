@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+weaviate-client==4.8.1
+numpy
+httpx
+pydantic

@@ -1,0 +1,35 @@
+services:
+  # Контейнер для FastAPI приложения
+  webapp:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - weaviate
+      - embedding_api
+    environment:
+      - WEAVIATE_URL=http://weaviate:8080
+      - EMBEDDING_API_URL=http://embedding_api:8081
+
+  # Контейнер для Weaviate (база данных)
+  weaviate:
+    image: semitechnologies/weaviate:latest
+    environment:
+      - AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true
+      - ENABLE_MODULES=text2vec-transformers
+      - QUERY_DEFAULTS_LIMIT=100
+      - ENABLE_GRPC=true
+      - TRANSFORMERS_INFERENCE_API=http://embedding_api:8081/embed
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    volumes:
+      - ./weaviate_data:/var/lib/weaviate
+
+  # Контейнер для API генерации эмбеддингов
+  embedding_api:
+    build:
+      context: ./embedding_api
+    ports:
+      - "8081:8081"
+
