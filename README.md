@@ -1,2 +1,0 @@
-# Yappy
-hack solution
